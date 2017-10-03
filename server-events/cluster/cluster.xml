@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cache
+    xmlns="http://geode.apache.org/schema/cache"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://geode.apache.org/schema/cache http://geode.apache.org/schema/cache/cache-1.0.xsd"
+    version="1.0">
+
+  <region name="Book">
+    <region-attributes refid="REPLICATE">
+      <!-- Write the correct XML configuration to register the CacheLoader -->
+      <cache-loader>
+        <class-name>io.pivotal.bookshop.buslogic.BookCacheLoader</class-name>
+      </cache-loader>
+
+      <!-- Write the correct XML configuration to register the CacheWriter -->
+      <cache-writer>
+        <class-name>io.pivotal.bookshop.buslogic.ValidatingCacheWriter</class-name>
+      </cache-writer>
+
+    </region-attributes>
+  </region>
+</cache>

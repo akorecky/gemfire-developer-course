@@ -1,0 +1,20 @@
+[ 'server-bootstrap',
+  'server-configuration',
+  'functions',
+  'domain',
+  'server-regions',
+  'client-cache',
+  'query',
+  'custom-partitioning',
+  'cache-management',
+  'server-events',
+  'client-events',
+  'data-serialization',
+  'transactions',
+  'server-functions',
+  'client-functions',
+  'spring-gemfire',
+  'gemfire-rest',
+  'data-serializer'].each {
+  include it
+}

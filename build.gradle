@@ -1,0 +1,49 @@
+group = 'io.pivotal.training'
+version = '0.1'
+
+subprojects {
+  apply plugin: 'java'
+
+  repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/libs-milestone' }
+    maven { url 'https://repo.spring.io/release' }
+  }
+
+  sourceCompatibility = 1.8
+
+  dependencies {
+    compile 'org.springframework.data:spring-data-gemfire:2.0.0.RC3'
+    compile 'org.projectlombok:lombok:1.16.18'
+
+    compile 'org.apache.logging.log4j:log4j-core:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.springframework:spring-test:5.0.0.RC4'
+    testCompile 'org.assertj:assertj-core:3.8.0'
+  }
+}
+
+project(':server-bootstrap') { dependencies { compile project(':domain') } }
+project(':server-configuration') { dependencies { compile project(':domain') } }
+project(':server-regions') { dependencies { compile project(':domain') } }
+project(':client-cache') { dependencies { compile project(':domain') } }
+project(':query') { dependencies { compile project(':domain') } }
+project(':custom-partitioning') { dependencies { compile project(':domain') } }
+project(':cache-management') { dependencies { compile project(':domain') } }
+project(':client-events') { dependencies { compile project(':domain') } }
+project(':server-events') { dependencies { compile project(':domain') } }
+
+project(':gemfire-rest') {
+  dependencies { compile 'org.springframework:spring-web:5.0.0.RC4' }
+}
+
+project(':server-bootstrap') {
+  task(seedRegions, dependsOn: 'test') {
+    group 'GemFire'
+    description "populate gemfire regions with books, customers, and orders"
+
+    tasks.test.outputs.upToDateWhen { false } // run every time
+  }
+}

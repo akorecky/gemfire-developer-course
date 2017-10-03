@@ -1,22 +1,16 @@
-# Compiled class file
-*.class
+.DS_Store
+.idea
+*.iml
+**/locator
+**/server[1-9]
+.gradle
+build
+# intellij creates these 'out' folders..
+out
 
-# Log file
-*.log
+# eclipse artifacts:
+.classpath
+.project
+.settings
+bin
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
