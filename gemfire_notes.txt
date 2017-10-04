@@ -1,0 +1,17 @@
+start locator --name=locator --port=12121
+
+
+start locator --name=locator
+start server --name=server1 --server-port=0 --properties-file=gemfire.properties --initial-heap=50m --max-heap=50m --classpath=../../build/classes/java/main
+start server --server-port=0 --properties-file=gemfire.properties --initial-heap=50m --max-heap=50m --classpath=../../build/classes/java/main --name=server2
+start server --name=server3 --server-port=0 --properties-file=gemfire.properties --initial-heap=50m --max-heap=50m --classpath=../../build/classes/java/main
+
+show metrics --region=/Customer --categories=partition --member=server1
+
+start server --name=server2 --server-port=0 --properties-file=gemfire.properties --classpath=../builds/libs/domain.jar
+
+deploy --jar=../../domain/build/libs/domain.jar
+
+list members
+
+shutdown --include-locators=true
