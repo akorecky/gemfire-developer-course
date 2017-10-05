@@ -12,6 +12,10 @@ start server --name=server2 --server-port=0 --properties-file=gemfire.properties
 
 deploy --jar=../../domain/build/libs/domain.jar
 
+start server --name=server1 --server-port=0 --properties-file=gemfire.properties --start-rest-api=true --http-service-port=8080 --http-service-bind-address=localhost --classpath=../../build/classes/java/main
+
 list members
 
 shutdown --include-locators=true
+
+990b6e2965788414842f23c5ed2a1f87470705fc
