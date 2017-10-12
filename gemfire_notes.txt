@@ -17,5 +17,3 @@ start server --name=server1 --server-port=0 --properties-file=gemfire.properties
 list members
 
 shutdown --include-locators=true
-
-990b6e2965788414842f23c5ed2a1f87470705fc
